@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -21,6 +23,9 @@ public class User implements Serializable {
     private String email;
     private String phone;
 
+    @OneToMany(mappedBy = "client")
+    private List<Order> orders =  new ArrayList<>();
+
     public User(){}
 
     public User(Long id, String name, String password, String email, String phone) {
@@ -32,6 +37,10 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
+
+    public List<Order> getOrders() {
+        return orders;
+    }
     public Long getId() {
         return id;
     }
