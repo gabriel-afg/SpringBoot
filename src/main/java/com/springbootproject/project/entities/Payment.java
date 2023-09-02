@@ -1,5 +1,6 @@
 package com.springbootproject.project.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -18,6 +19,7 @@ public class Payment implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Instant instant;
+    @JsonIgnore
     @OneToOne
     @MapsId
     private Order order;
